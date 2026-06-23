@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Shena & Ikram</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap');
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: radial-gradient(circle, #fff5f2 0%, #f4ede8 100%); 
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container { 
+            background: white; 
+            padding: 40px 25px; 
+            border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            max-width: 400px; 
+            width: 100%;
+            text-align: center;
+            position: relative; /* Diperlukan untuk posisi bunga */
+            overflow: hidden;
+        }
+        /* Dekorasi Romantis */
+        .container::before { content: "🌸"; position: absolute; top: 10px; left: 10px; font-size: 2rem; opacity: 0.6; }
+        .container::after { content: "💖"; position: absolute; bottom: 10px; right: 10px; font-size: 2rem; opacity: 0.6; }
+        
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #c5a059; margin: 10px 0; }
+        
+        .countdown { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+        .box { background: #fdfbf7; padding: 10px; border-radius: 10px; width: 60px; font-size: 0.7rem; font-weight: 500; color: #c5a059; border: 1px solid #efeae6; }
+        .box span { font-size: 1.1rem; display: block; font-weight: 700; }
+        
+        .event-details { margin: 25px 0; padding: 20px; background: #faf8f6; border-radius: 15px; text-align: left; font-size: 0.9rem; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
+        .btn { padding: 12px 20px; border-radius: 50px; font-weight: 500; text-decoration: none; transition: 0.3s; border: none; cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 0.95rem; }
+        .btn-music { background: #c5a059; color: white; }
+        .btn-maps { background: #e2d1c3; color: #4a4a4a; }
+        .btn:hover { opacity: 0.9; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <p>Save The Date</p>
+        <p style="font-weight: bold; color: #c5a059;">02 Juli 2026</p>
+        <h1>Shena & Ikram</h1>
+        
+        <div class="countdown" id="countdown">
+            <div class="box"><span id="days">0</span>Hari</div>
+            <div class="box"><span id="hours">0</span>Jam</div>
+            <div class="box"><span id="minutes">0</span>Menit</div>
+            <div class="box"><span id="seconds">0</span>Detik</div>
+        </div>
+
+        <p>Dengan memohon Rahmat dan Ridha Allah, kami mengundang Bapak/Ibu/Saudara/i untuk hadir di acara pernikahan kami.</p>
+        
+        <div class="event-details">
+            <p><strong>Hari/Tanggal:</strong> Kamis, 02 Juli 2026</p>
+            <p><strong>Waktu:</strong> 09.00 WITA - Selesai</p>
+            <p><strong>Lokasi:</strong> Ds. Pengambaw Hilir Dalam, Kec. Haruyan, Kab. Hulu Sungai Tengah</p>
+        </div>
+        
+        <div class="btn-group">
+            <button class="btn btn-music" id="btnPlay" onclick="playMusic()">🔊 Buka Undangan</button>
+            <a href="https://www.google.com/maps/place/2%C2%B042'00.6%22S+115%C2%B019'58.8%22E/@-2.7002146,115.3329574,3a,75y,43.07h,90t/data=!3m7!1e1!3m5!1sSE0kxNZd6H_pR1ymzi657w!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DSE0kxNZd6H_pR1ymzi657w%26yaw%3D43.068966!7i16384!8i8192!4m4!3m3!8m2!3d-2.700167!4d115.333006?entry=ttu&g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn btn-maps">📍 Lihat Lokasi</a>
+        </div>
+    </div>
+
+    <audio id="myAudio" loop>
+        <source src="lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function playMusic() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+            document.getElementById("btnPlay").style.display = 'none';
+        }
+
+        const targetDate = new Date("July 2, 2026 09:00:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+        }, 1000);
+    </script>
+</body>
+</html>
